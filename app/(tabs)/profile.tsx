@@ -30,59 +30,85 @@ const ProfileScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  ecgImage: {
-    width: 100,
-    height: 50,
-    resizeMode: 'contain',
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#000',
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#777',
-    textAlign: 'center',
-    marginBottom: 30,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
-    alignSelf: 'flex-start',
-    marginBottom: 10,
-  },
-  detailsText: {
-    fontSize: 14,
-    color: '#555',
-    lineHeight: 20,
-    textAlign: 'justify',
-    marginBottom: 30,
-  },
-  button: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#E74C3C',
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+      },
+      ecgImage: {
+        width: 300,
+        height: 200,
+        resizeMode: 'contain',
+        opacity:0.4,
+        
+      },
+      title: {
+        fontSize: 60,
+        fontFamily: 'poppins',
+        color: 'black',
+        textAlign: 'center',
+        fontWeight: '300',
+        top: -30,
+        lineHeight: 60,
+        letterSpacing:2,
+      },
+      
+      subtitle: {
+        fontSize: 25,
+        color: '#000000',
+        fontFamily: 'poppins',
+        fontWeight: '300',
+        textAlign: 'center',
+        marginBottom: 30,
+        letterSpacing:1.5, 
+        top: -25, 
+      },
+
+      sectionTitle: {
+        fontSize: 22,
+        color: '#000000',
+        fontFamily: 'poppins',
+        fontWeight: 'bold',
+        textAlign: 'left',
+        letterSpacing: 1.5,
+        top: -25,
+        width: '85%',  // Ensures the text component takes the full width
+    },
+    
+    detailsText: {
+        fontSize: 22,
+        color: '#000000',
+        fontFamily: 'poppins',
+        textAlign: 'left',
+        marginBottom: 50,
+        letterSpacing: 1.5,
+      
+        fontWeight: '300',
+        width: '85%',
+    },
+    button: {
+        backgroundColor: '#D2341B',
+        width: '80%',
+        paddingVertical: 15,
+        borderRadius: 30,
+        alignItems: 'center',
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+
+    buttonText: {
+        color: '#FFFFFF',
+        fontSize: 18,
+        fontFamily: 'poppins',
+        fontWeight: '600',
+    },
+
+
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-around',

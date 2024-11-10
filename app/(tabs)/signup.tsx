@@ -23,56 +23,76 @@ const SignUpScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  ecgImage: {
-    width: 100,
-    height: 50,
-    resizeMode: 'contain',
-    marginBottom: 20,
-  },
-  title: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#E74C3C',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#555',
-    marginBottom: 30,
-  },
-  input: {
-    width: '100%',
-    height: 50,
-    borderColor: '#DDD',
-    borderWidth: 1,
-    borderRadius: 25,
-    paddingHorizontal: 15,
-    marginBottom: 20,
-    fontSize: 16,
-    color: '#333',
-    backgroundColor: '#F9F9F9',
-  },
-  button: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#E74C3C',
-    borderRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+      },
+      ecgImage: {
+        width: 300,
+        height: 200,
+        resizeMode: 'contain',
+        opacity:0.4,
+        
+      },
+      title: {
+        fontSize: 80,
+        fontFamily: 'Poiret One',
+        color: '#D2341B',
+        textAlign: 'center',
+        fontWeight: '200',
+        top: -30,
+        lineHeight: 85,
+        letterSpacing:2,
+      },
+      
+      subtitle: {
+        fontSize: 25,
+        color: '#000000',
+        fontFamily: 'poppins',
+        fontWeight: '300',
+        textAlign: 'center',
+        marginBottom: 30,
+        letterSpacing:1.5, 
+        top: -20, 
+      },
+    
+      input: {
+        width: '80%',
+        height: 50,
+        backgroundColor: '#F0F0F0',
+        borderRadius: 25,
+        paddingHorizontal: 20,
+        fontSize: 16,
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        elevation: 5,
+        top: -20,
+      },
+
+    button: {
+        backgroundColor: '#D2341B',
+        width: '80%',
+        paddingVertical: 15,
+        borderRadius: 30,
+        alignItems: 'center',
+        marginBottom: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    buttonText: {
+        color: '#FFFFFF',
+        fontSize: 18,
+        fontFamily: 'poppins',
+        fontWeight: '600',
+    },
 });
 
 export default SignUpScreen;
