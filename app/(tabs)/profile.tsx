@@ -1,7 +1,12 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const ProfileScreen = () => {
+type ProfileScreenProps = {
+  navigation: NativeStackNavigationProp<any, any>;
+};
+
+const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -21,9 +26,17 @@ const ProfileScreen = () => {
         <Text style={styles.buttonText}>Get details</Text>
       </TouchableOpacity>
 
+      {/* Footer */}
       <View style={styles.footer}>
-        <Image source={{ uri: 'https://example.com/icon1.png' }} style={styles.icon} />
-        <Image source={{ uri: 'https://example.com/icon2.png' }} style={styles.icon} />
+        {/* Left Button - Navigate to History Screen */}
+        <TouchableOpacity onPress={() => navigation.navigate('history')}>
+          <Image source={require('./images/history.png')} style={styles.icon}  />
+        </TouchableOpacity>
+
+        {/* Right Button - Navigate to Welcome Screen */}
+        <TouchableOpacity onPress={() => navigation.navigate('welcome')}>
+          <Image source={require('./images/logout.png')} style={styles.icon} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -74,52 +87,53 @@ const styles = StyleSheet.create({
         letterSpacing: 1.5,
         top: -25,
         width: '85%',  // Ensures the text component takes the full width
-    },
+      },
     
-    detailsText: {
-        fontSize: 22,
-        color: '#000000',
-        fontFamily: 'poppins',
-        textAlign: 'left',
-        marginBottom: 50,
-        letterSpacing: 1.5,
+      detailsText: {
+          fontSize: 22,
+          color: '#000000',
+          fontFamily: 'poppins',
+          textAlign: 'left',
+          marginBottom: 50,
+          letterSpacing: 1.5,
+        
+          fontWeight: '300',
+          width: '85%',
+        },
+        button: {
+          backgroundColor: '#D2341B',
+          width: '80%',
+          paddingVertical: 15,
+          borderRadius: 30,
+          alignItems: 'center',
+          marginBottom: 20,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.3,
+          shadowRadius: 4,
+          elevation: 5,
+      },
+
+      buttonText: {
+          color: '#FFFFFF',
+          fontSize: 18,
+          fontFamily: 'poppins',
+          fontWeight: '600',
+      },
+
+
+      footer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '100%',
+        marginTop: 30,
+      },
       
-        fontWeight: '300',
-        width: '85%',
-    },
-    button: {
-        backgroundColor: '#D2341B',
-        width: '80%',
-        paddingVertical: 15,
-        borderRadius: 30,
-        alignItems: 'center',
-        marginBottom: 20,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-
-    buttonText: {
-        color: '#FFFFFF',
-        fontSize: 18,
-        fontFamily: 'poppins',
-        fontWeight: '600',
-    },
-
-
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginTop: 30,
-  },
-  icon: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
-  },
+      icon: {
+        width: 30,
+        height: 30,
+        resizeMode: 'contain',
+      },
 });
 
 export default ProfileScreen;

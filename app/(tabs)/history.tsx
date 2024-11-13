@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image , StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HistoryScreen = () => {
   // Sample data for history records
@@ -8,15 +9,22 @@ const HistoryScreen = () => {
     { date: '23/10/2024', time: '22:21', potassium: 'High', calcium: 'High', magnesium: 'Normal' },
   ];
 
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Text style={styles.backButton}>{"<"}</Text>
+       <View style={styles.header}>
+        {/* Back Button on the Left */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('./images/back.png')} style={styles.backIcon} />
         </TouchableOpacity>
-        <Text style={styles.title}>History</Text>
-        <TouchableOpacity>
-          <Text style={styles.menuButton}>☰</Text>
+
+        {/* Title in the center */}
+        <Text style={styles.title}>Electrolytes & Health</Text>
+
+        {/* Dropdown Button on the Right */}
+        <TouchableOpacity onPress={() => {/* Add dropdown functionality here */}} style={styles.dropdownButton}>
+          <Image source={require('./images/dropdown.png')} style={styles.dropdown} />
         </TouchableOpacity>
       </View>
 
@@ -49,11 +57,14 @@ const HistoryScreen = () => {
       </View>
 
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.footerButton}>
-          <Text>📊</Text>
+        {/* Left Button - Navigate to History Screen */}
+        <TouchableOpacity onPress={() => navigation.navigate('history')}>
+          <Image source={require('./images/history.png')} style={styles.icon}  />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.footerButton}>
-          <Text>🔄</Text>
+
+        {/* Right Button - Navigate to Welcome Screen */}
+        <TouchableOpacity onPress={() => navigation.navigate('welcome')}>
+          <Image source={require('./images/logout.png')} style={styles.icon} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -81,6 +92,22 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
+    textAlign: 'left', // Keep the title centered
+    flex: 1, // This ensures the title takes all available space
+  },
+
+  dropdownButton: {
+    padding: 10,
+  },
+  dropdown: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  },
+  backIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
   },
   menuButton: {
     fontSize: 24,
@@ -90,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     borderRadius: 10,
     padding: 10,
-    marginBottom: 16,
+    margin: 20,
   },
   tableHeader: {
     flexDirection: 'row',

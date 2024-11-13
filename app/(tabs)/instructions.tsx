@@ -1,15 +1,32 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const InstructionsScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Electrolytes Imbalance</Text>
+      {/* Back Button and Title */}
+      <View style={styles.header}>
+        {/* Back Button on the Left */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('./images/back.png')} style={styles.backIcon} />
+        </TouchableOpacity>
 
-      <Image source={{ uri: 'https://example.com/ecg_device_image.png' }} style={styles.deviceImage} />
+        {/* Title in the center */}
+        <Text style={styles.title}>Electrolytes Imabalance</Text>
+
+        {/* Dropdown Button on the Right */}
+        <TouchableOpacity onPress={() => {/* Add dropdown functionality here */}} style={styles.dropdownButton}>
+          <Image source={require('./images/dropdown.png')} style={styles.dropdown} />
+        </TouchableOpacity>
+      </View>
+
+      <Image source={require('./images/sensor.png')} style={styles.deviceImage} />
       <Text style={styles.instructionText}>Ensure Your ECG Device is Ready.</Text>
 
-      <Image source={{ uri: 'https://example.com/ecg_sensors_placement_image.png' }} style={styles.sensorsImage} />
+      <Image source={require('./images/placement.png')} style={styles.sensorsImage} />
       <Text style={styles.instructionText}>Place ECG Sensors Correctly.</Text>
 
       <View style={styles.instructionsContainer}>
@@ -35,9 +52,17 @@ const InstructionsScreen = () => {
         <Text style={styles.buttonText}>Check Electrolytes</Text>
       </TouchableOpacity>
 
+      {/* Footer */}
       <View style={styles.footer}>
-        <Image source={{ uri: 'https://example.com/icon1.png' }} style={styles.icon} />
-        <Image source={{ uri: 'https://example.com/icon2.png' }} style={styles.icon} />
+        {/* Left Button - Navigate to History Screen */}
+        <TouchableOpacity onPress={() => navigation.navigate('history')}>
+          <Image source={require('./images/history.png')} style={styles.icon}  />
+        </TouchableOpacity>
+
+        {/* Right Button - Navigate to Welcome Screen */}
+        <TouchableOpacity onPress={() => navigation.navigate('welcome')}>
+          <Image source={require('./images/logout.png')} style={styles.icon} />
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -49,13 +74,38 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     padding: 20,
+    paddingTop: 55,
+    
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 30,
+
+  },
+  backButton: {
+    marginRight: 10,
+  },
+  backIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
   },
   title: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: '#000',
-    textAlign: 'center',
-    marginBottom: 20,
+    color: 'black',
+    textAlign: 'left', // Keep the title centered
+    flex: 1, // This ensures the title takes all available space
+  },
+  dropdownButton: {
+    padding: 10,
+  },
+  dropdown: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
   deviceImage: {
     width: 100,
@@ -92,21 +142,24 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   warningText: {
-    fontSize: 14,
+    fontSize: 23,
     color: '#E74C3C',
     fontWeight: 'bold',
-    marginBottom: 20,
     textAlign: 'center',
   },
   button: {
-    width: '100%',
+    width: '80%',
     height: 50,
-    backgroundColor: '#E74C3C',
-    borderRadius: 25,
+    backgroundColor: '#D2341B',
+    borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
     marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   buttonText: {
     color: '#FFF',

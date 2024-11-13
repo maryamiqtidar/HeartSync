@@ -1,20 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HealthScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Text style={styles.backButton}>{"<"}</Text>
+        {/* Back Button on the Left */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('./images/back.png')} style={styles.backIcon} />
         </TouchableOpacity>
+
+        {/* Title in the center */}
         <Text style={styles.title}>Electrolytes & Health</Text>
-        <TouchableOpacity>
-          <Text style={styles.menuButton}>☰</Text>
+
+        {/* Dropdown Button on the Right */}
+        <TouchableOpacity onPress={() => {/* Add dropdown functionality here */}} style={styles.dropdownButton}>
+          <Image source={require('./images/dropdown.png')} style={styles.dropdown} />
         </TouchableOpacity>
       </View>
 
       <ScrollView>
+        {/* Potassium Card */}
         <View style={[styles.card, styles.potassium]}>
           <Text style={styles.electrolyteTitle}>Potassium</Text>
           <Text style={styles.description}>
@@ -25,6 +34,7 @@ const HealthScreen = () => {
           <Text style={styles.symptoms}><Text style={styles.boldText}>Excess Symptoms:</Text> Nausea, irregular heartbeat, muscle weakness.</Text>
         </View>
 
+        {/* Calcium Card */}
         <View style={[styles.card, styles.calcium]}>
           <Text style={styles.electrolyteTitle}>Calcium</Text>
           <Text style={styles.description}>
@@ -34,6 +44,7 @@ const HealthScreen = () => {
           <Text style={styles.symptoms}><Text style={styles.boldText}>Excess Symptoms:</Text> Nausea, vomiting, kidney stones.</Text>
         </View>
 
+        {/* Magnesium Card */}
         <View style={[styles.card, styles.magnesium]}>
           <Text style={styles.electrolyteTitle}>Magnesium</Text>
           <Text style={styles.description}>
@@ -60,23 +71,38 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  backButton: {
-    fontSize: 24,
-    color: 'black',
-  },
+  
   title: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
+    textAlign: 'left', // Keep the title centered
+    flex: 1, // This ensures the title takes all available space
   },
-  menuButton: {
-    fontSize: 24,
-    color: 'black',
+
+  backButton: {
+    padding: 10,
   },
+  backIcon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  },
+
+  dropdownButton: {
+    padding: 10,
+  },
+  dropdown: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  },
+
   card: {
     padding: 16,
     borderRadius: 10,
-    marginBottom: 16,
+    marginBottom: 14,
+    margin: 20,
   },
   potassium: {
     backgroundColor: '#d3eedd',

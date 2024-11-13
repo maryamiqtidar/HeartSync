@@ -1,16 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text,Image,  StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ElectrolytesImbalanceScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Text style={styles.backButton}>{"<"}</Text>
+        {/* Back Button on the Left */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('./images/back.png')} style={styles.backIcon} />
         </TouchableOpacity>
+
+        {/* Title in the center */}
         <Text style={styles.title}>Electrolytes Imbalance</Text>
-        <TouchableOpacity>
-          <Text style={styles.menuButton}>☰</Text>
+
+        {/* Dropdown Button on the Right */}
+        <TouchableOpacity onPress={() => {/* Add dropdown functionality here */}} style={styles.dropdownButton}>
+          <Image source={require('./images/dropdown.png')} style={styles.dropdown} />
         </TouchableOpacity>
       </View>
 
@@ -46,22 +54,28 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   backButton: {
-    fontSize: 24,
-    color: 'black',
+    marginRight: 10,
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
+    textAlign: 'left', // Keep the title centered
+    flex: 1, // This ensures the title takes all available space
   },
-  menuButton: {
-    fontSize: 24,
-    color: 'black',
+  dropdownButton: {
+    padding: 10,
+  },
+  dropdown: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
   },
   card: {
-    padding: 20,
-    borderRadius: 10,
-    marginBottom: 16,
+    padding: 30,
+    borderRadius: 20,
+    marginBottom: 14,
+    margin: 20,
   },
   normal: {
     backgroundColor: '#d3eedd',
@@ -73,25 +87,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8d7da',
   },
   levelType: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: '600',
     color: 'black',
   },
   levelStatusNormal: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     color: 'green',
   },
   levelStatusLow: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#b0a217',
   },
   levelStatusHigh: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#d9534f',
   },
+
+  backIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+  }
+
 });
 
 export default ElectrolytesImbalanceScreen;
